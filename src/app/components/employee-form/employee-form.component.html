@@ -9,9 +9,12 @@
         </div>
       </div>
     </div>
+    <div>
+      <alert-bar [alertObj]="alertObj"></alert-bar>
+    </div>
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-12">
-        <form [formGroup]="employeeForm" (ngSubmit)="employeeForm.valid && save()" novalidate>
+        <form [formGroup]="employeeForm" (ngSubmit)="save()" novalidate>
           <div class="form-wrapper">
 
             <div class="row">

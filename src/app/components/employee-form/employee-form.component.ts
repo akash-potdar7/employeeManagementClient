@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Employee } from '../../models/employee';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { StoreService } from '../../service/store.service';
+import { AlertBar } from '../../models/alert';
 
 @Component({
   selector: 'emp-form',
@@ -21,16 +23,22 @@ export class EmployeeFormComponent implements OnInit {
   bsDatepickerConfig: Partial<BsDatepickerConfig>;
   today: Date = new Date();
 
+  alertObj: AlertBar;
+
+  constructor(
+    private storeService: StoreService
+  ) {}
+
   ngOnInit() {
     this.bsDatepickerConfig = Object.assign({}, { containerClass: 'theme-green' });
     this.initFormBuild();
+    this.alertObj = null;
   }
 
   private initFormBuild(): void {
     this.buildFormControls();
     this.buildForm();
   }
-
 
   private buildFormControls(): void {
     this.firstName = new FormControl('', Validators.required);
@@ -56,7 +64,10 @@ export class EmployeeFormComponent implements OnInit {
   }
 
   save() {
-    console.log(this.employeeForm.value);
+    this.storeService.create(this.employeeForm.value);
+    this.employeeForm.reset();
+    this.dateOfJoining.setValue(new Date());
+    this.alertObj = new AlertBar(['Employee added!'], 'alert alert-success alert-dismissible', 6);
   }
 
 }

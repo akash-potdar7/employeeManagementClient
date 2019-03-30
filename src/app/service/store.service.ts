@@ -11,7 +11,7 @@ export class StoreService {
     employees: Employee[];
   };
 
-  MOCK_EMPLOYEES_URL: string = "http://www.mocky.io/v2/5c9f7b6b3300000f00a87d14";
+  baseApi: string = "https://5c9f7c351afd06001466877a.mockapi.io";
 
   employees: Observable<Employee[]>;
   private _employees: BehaviorSubject<Employee[]>;
@@ -24,10 +24,10 @@ export class StoreService {
     this.employees = this._employees.asObservable();
   }
 
-  loadAllEmployees() {
-    this.http.get(this.MOCK_EMPLOYEES_URL).subscribe(
+  fetchEmployees() {
+    this.http.get(`${this.baseApi}/employee`).subscribe(
       (empData: any) => {
-        console.log('employess', empData)
+        console.log('employees', empData)
         this.employeeDataStore.employees = empData;
         this._employees.next(
           Object.assign({}, this.employeeDataStore).employees
@@ -36,4 +36,17 @@ export class StoreService {
       error => console.log("Could not load employees")
     );
   }
+
+  create(employee: Employee) {
+    this.http.post(`${this.baseApi}/employee`, employee).subscribe(
+      (data: Employee) => {
+        console.log('Added!', data)
+        this.employeeDataStore.employees.push(data);
+        this._employees.next(Object.assign({}, this.employeeDataStore).employees);
+      },
+      error => console.log('Could not create todo.'));
+  }
+
+
+
 }

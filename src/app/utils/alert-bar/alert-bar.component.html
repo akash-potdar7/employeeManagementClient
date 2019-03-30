@@ -1,3 +1,5 @@
-<p>
-  alert-bar works!
-</p>
+<div [class]="alertObj?.type" *ngIf="show">
+  <div *ngFor="let msg of alertObj.messages">
+    {{msg}}
+  </div>
+</div>

@@ -19,7 +19,7 @@ export class EmployeesListComponent implements OnInit {
 
   ngOnInit() {
     this.employees = this.storeService.employees;
-    this.storeService.loadAllEmployees();
+    this.storeService.fetchEmployees();
   }
 
 }

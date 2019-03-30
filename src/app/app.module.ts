@@ -8,14 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
 import { EmployeesListComponent } from './components/employees-list/employees-list.component';
-import { AlertBarComponent } from './utils/alert-bar/alert-bar.component';
 import { HeaderComponent } from './components/header/header.component';
+import { AlertBarComponent } from './utils/alert-bar/alert-bar.component';
 
 // services
+import { StoreService } from './service/store.service';
 
 // 3rd party modules and services
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { StoreService } from './service/store.service';
 
 @NgModule({
   declarations: [
