@@ -4,7 +4,9 @@
       <div class="col-sm-4 col-md-4 col-lg-4">
         <div class="form-title">
           <p>
-            Add Employee
+            <ng-container *ngIf="'ADD_EMP' == formMode; then addEmpTitle; else editEmpTitle"></ng-container>
+            <ng-template #addEmpTitle>Add Employee</ng-template>
+            <ng-template #editEmpTitle>Edit Employee Details</ng-template>
           </p>
         </div>
       </div>
@@ -68,7 +70,12 @@
             <div class="row">
               <div class="col-sm-6 col-md-6 col-lg-16">
                 <div class="form-group">
-                  <button type="submit" class="btn btn-outline-primary">Save</button>
+                  <button type="submit" class="btn btn-outline-primary">
+                    <ng-container *ngIf="'ADD_EMP' == formMode; then addEmpSubmitBtnText; else editEmpSubmitBtnText"></ng-container>
+                    <ng-template #addEmpSubmitBtnText>Save</ng-template>
+                    <ng-template #editEmpSubmitBtnText>Update</ng-template>
+                  </button>
+                  <button class="btn btn-outline-light text-dark" type="button" (click)="resetForm()">Clear</button>
                 </div>
               </div>
             </div>

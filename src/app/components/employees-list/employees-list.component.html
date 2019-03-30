@@ -1,4 +1,4 @@
-<div class="emp-list-container">
+<div class="emp-list-container" *ngIf="(employees | async)?.length > 0">
   <div class="emp-list-wrapper">
     <table class="table">
       <thead>
@@ -11,10 +11,10 @@
         <tr *ngFor="let employee of (employees | async)">
           <td>{{ employee.firstName }}</td>
           <td>{{ employee.lastName }}</td>
-          <td>{{ employee.dateOfJoining }}</td>
+          <td>{{ employee.dateOfJoining | date }}</td>
           <td>{{ employee.designation }}</td>
           <td>
-            <button class="btn btn-outline-info">Edit</button>
+            <button class="btn btn-outline-info" (click)="editEmployee(employee)">Edit</button>
             <button class="btn btn-outline-danger" (click)="deleteEmployee(employee.id)">Delete</button>
           </td>
         </tr>
