@@ -1,7 +1,7 @@
 // core
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // components
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { HeaderComponent } from './components/header/header.component';
 // services
 
 // 3rd party modules and services
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { HeaderComponent } from './components/header/header.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

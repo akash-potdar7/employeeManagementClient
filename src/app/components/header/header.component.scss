@@ -1,13 +1,18 @@
+$center: center;
 .header-wrapper {
     display: block;
     width: 100%;
     padding: 4px;
     height: 50px;
     background: #673ab7;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05), 0 2px 8px 0 rgba(0, 0, 0, 0.05);
 }
 .header-contents {
     display: flex;
-    justify-content: center;
+    height: 100%;
+    width: 100%;
+    align-items: $center;
+    justify-content: $center;
     > .title {
         color: #fff;
     }

@@ -1,3 +1,78 @@
-<p>
-  employee-form works!
-</p>
+<div class="form-container">
+  <div class="emp-form-wrapper">
+    <div class="row">
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <div class="form-title">
+          <p>
+            Add Employee
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <form [formGroup]="employeeForm" (ngSubmit)="employeeForm.valid && save()" novalidate>
+          <div class="form-wrapper">
+
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-container">
+                  <label for="first_name">First Name</label>
+                  <input class="form-control" id="first_name" type="text" placeholder="First Name" formControlName="firstName" />
+                  <div class="form-error" *ngIf="firstName.errors && (firstName.dirty || (firstName.touched && firstName.pristine))">
+                    <i *ngIf="firstName.errors.required" class="slide-down">First Name is required</i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-container">
+                  <label for="lastName">Last Name</label>
+                  <input class="form-control" id="last_name" type="text" placeholder="Last Name" formControlName="lastName" />
+                  <div class="form-error" *ngIf="lastName.errors && (lastName.dirty || (lastName.touched && lastName.pristine))">
+                    <i *ngIf="lastName.errors.required" class="slide-down">Last Name is required</i>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-container">
+                  <label for="doj">Last Name</label>
+                  <input type="text"
+                    id="doj"
+                    placeholder="Datepicker"
+                    formControlName="dateOfJoining"
+                    class="form-control"
+                    bsDatepicker
+                    [bsValue]="today"/>
+                  <div class="form-error" *ngIf="dateOfJoining.errors && (dateOfJoining.dirty || (dateOfJoining.touched && dateOfJoining.pristine))">
+                    <i *ngIf="dateOfJoining.errors.required" class="slide-down">Date Of Joining is required</i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group input-container">
+                  <label for="designation">Designation</label>
+                  <input class="form-control" id="designation" type="text" placeholder="Designation" formControlName="designation" />
+                  <div class="form-error" *ngIf="designation.errors && (designation.dirty || (designation.touched && designation.pristine))">
+                    <i *ngIf="designation.errors.required" class="slide-down">Designation is required</i>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-lg-16">
+                <div class="form-group">
+                  <button type="submit" class="btn btn-outline-primary">Save</button>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
