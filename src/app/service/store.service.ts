@@ -65,6 +65,7 @@ export class StoreService {
                 this.employeeDataStore.employees[i] = data;
         });
         this._employees.next(Object.assign({}, this.employeeDataStore).employees);
+        this.setEmployeeOnEdit(null);
       },
       () => console.log('Could not update employee.'));
   }
@@ -77,7 +78,6 @@ export class StoreService {
                 if (e.id === employeeId)
                     this.employeeDataStore.employees.splice(i, 1);
             });
-            this.setEmployeeOnEdit(null);
         },
         () => console.log('Could not delete employee.'));
   }
