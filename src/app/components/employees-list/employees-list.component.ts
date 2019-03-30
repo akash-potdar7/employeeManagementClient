@@ -22,4 +22,8 @@ export class EmployeesListComponent implements OnInit {
     this.storeService.fetchEmployees();
   }
 
+  deleteEmployee(employeeId: number) {
+    this.storeService.delete(employeeId);
+  }
+
 }

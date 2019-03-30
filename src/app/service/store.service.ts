@@ -33,7 +33,7 @@ export class StoreService {
           Object.assign({}, this.employeeDataStore).employees
         );
       },
-      error => console.log("Could not load employees")
+      () => console.log("Could not load employees")
     );
   }
 
@@ -44,9 +44,19 @@ export class StoreService {
         this.employeeDataStore.employees.push(data);
         this._employees.next(Object.assign({}, this.employeeDataStore).employees);
       },
-      error => console.log('Could not create todo.'));
+      () => console.log('Could not create employee.'));
   }
 
-
+  delete(employeeId: number) {
+    this.http.delete(`${this.baseApi}/employee/${employeeId}`).subscribe(
+        reponse => {
+            console.log('deleted!', reponse);
+            this.employeeDataStore.employees.forEach((e, i) => {
+                if (e.id === employeeId)
+                    this.employeeDataStore.employees.splice(i, 1)
+            });
+        },
+        () => console.log('Could not delete employee.'));
+  }
 
 }
