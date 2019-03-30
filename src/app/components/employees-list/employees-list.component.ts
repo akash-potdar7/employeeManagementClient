@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { StoreService } from '../../service/store.service';
+import { Employee } from '../../models/employee';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'emp-list',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeesListComponent implements OnInit {
 
-  constructor() { }
+  columns: string[] = ["FIRST NAME", "LAST NAME", "DATE OF JOINING", "DESIGNATION"];
+  employees: Observable<Employee[]>;
+
+  constructor(
+    private storeService: StoreService
+  ) { }
 
   ngOnInit() {
+    this.employees = this.storeService.employees;
+    this.storeService.loadAllEmployees();
   }
 
 }

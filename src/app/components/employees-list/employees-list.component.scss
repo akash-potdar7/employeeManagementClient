@@ -1,0 +1,15 @@
+.emp-list-container {
+    display: block;
+    height: auto;
+    background: #fff;
+    border-radius: 14px;
+    -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05), 0 2px 8px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05), 0 2px 8px 0 rgba(0, 0, 0, 0.05);
+
+    > .emp-list-wrapper {
+        padding: 12px;
+    }
+}
+.table td, .table th {
+    border-top: 0;
+}

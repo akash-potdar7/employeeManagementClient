@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1001",
+    "firstName": "John",
+    "lastName": "Dow",
+    "dateOfJoining": "03/30/2019",
+    "designation": "Sweeper"
+  },
+  {
+    "id": "1002",
+    "firstName": "Kevin",
+    "lastName": "Irani",
+    "dateOfJoining": "01/07/2019",
+    "designation": "Sweeper"
+  },
+  {
+    "id": "1003",
+    "firstName": "Ratan",
+    "lastName": "Deb",
+    "dateOfJoining": "01/17/2019",
+    "designation": "Sweeper"
+  }
+]
